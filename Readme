@@ -1,0 +1,37 @@
+2017.01.17 Code for bird detection challenge
+Author:	Qiuqiang Kong
+Email:	q.kong@surrey.ac.uk
+Liscence: MIT
+----------------------------------
+Summary:
+* Combine detection network and classification network
+* use CNN to model classification network
+* use linear layer to model detection network
+* Train using EM algorithm
+==================================
+
+# -------- Generate denoised wavs --------
+* run matlab/generate_denoise_wavs.m	# You need modify paths to your own paths. This file generate denoised wavs using OM-LSA. 
+
+# -------- Calculate features --------
+* python prepare_data.py --warblrb --denoise_fft	# calcuate fft features
+* python prepare_data.py --warblrb --denoise_enhance_fft	# use median filter and substract spectrom to enhance fft features
+* python prepare_data.py --warblrb --denoise_enhance_pool_fft	# pool to reduce dimension of fft
+* python prepare_data.py --test --denoise_fft	# calcuate fft features
+* python prepare_data.py --test --denoise_enhance_fft	# use median filter and substract spectrom to enhance fft features
+* python prepare_data.py --test --denoise_enhance_pool_fft	# pool to reduce dimension of fft
+
+# -------- Training --------
+* Modify paths in config.py to your own paths
+* python create_cv.py		# Create 10 folds for warblrb dataset
+
+# python train_recognize.py --pre_load		# pre load data
+# python train_recognize.py --train		# train model
+
+# -------- Test --------
+# python train_recognize.py --recognize0	# recognize on validation data
+# python train_recognize.py --recognize_on_test_data	# recognize and write result of test data
+
+
+Tips:
+the "alpha_eta_ref" in run_omlsa.m can be tuned between [0,1] to adjust denoise level. 
