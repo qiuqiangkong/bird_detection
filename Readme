@@ -8,6 +8,7 @@ Summary:
 * use CNN to model classification network
 * use linear layer to model detection network
 * Train using EM algorithm
+* auc on test dataset is 79%. 
 ==================================
 
 # -------- Generate denoised wavs --------
