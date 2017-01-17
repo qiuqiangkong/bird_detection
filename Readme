@@ -9,6 +9,7 @@ Summary:
 * use linear layer to model detection network
 * Train using EM algorithm
 * auc on test dataset is 79%. 
+* rely on deeplearning toolbox Hat https://github.com/qiuqiangkong/Hat
 ==================================
 
 # -------- Generate denoised wavs --------
